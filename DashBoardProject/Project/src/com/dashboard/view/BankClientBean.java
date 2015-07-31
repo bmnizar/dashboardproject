@@ -1,5 +1,6 @@
 package com.dashboard.view;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -9,6 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.persistence.Temporal;
 
+import org.primefaces.event.SelectEvent;
+
 import com.dashboard.controller.BankClientController;
 import com.dashboard.model.BankAccount;
 import com.dashboard.model.BankClientRank;
@@ -16,8 +19,12 @@ import com.dashboard.model.BankClientRank;
 @ManagedBean()
 @SessionScoped
 public class BankClientBean {
-
-	public void buttonAction(ActionEvent actionEvent) {
+	 public void onDateSelect(SelectEvent event) {
+	        FacesContext facesContext = FacesContext.getCurrentInstance();
+	        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+	    }
+	public void saveBankClient(ActionEvent actionEvent) {
 
 		BankClientController.saveClient(this);
 		addMessage("Client saved with success");
@@ -32,12 +39,10 @@ public class BankClientBean {
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
-	
-	
 	private BankClientRank bankAccountRank;
 	private String job;
 	private String location;
-	private BankAccountBean bankAccountBean;
+	private BankAccountBean bankAccountBean= new BankAccountBean();
 
 	public String getFirstName() {
 		return firstName;
@@ -62,8 +67,6 @@ public class BankClientBean {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
-
 
 	public BankClientRank getBankAccountRank() {
 		return bankAccountRank;

@@ -15,27 +15,25 @@ import com.dashboard.model.BankAccountStatus;
 @SessionScoped
 public class BankAccountBean {
 
+	private String amount;
 
-
-	private BigDecimal amount;
-
-	private BigDecimal maxAllowedRedAmount;
+	private String maxAllowedRedAmount;
 	private Date dateOfCreation;
 	private BankAccountStatus bankAccountStatus;
 
-	public BigDecimal getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 
-	public BigDecimal getMaxAllowedRedAmount() {
+	public String getMaxAllowedRedAmount() {
 		return maxAllowedRedAmount;
 	}
 
-	public void setMaxAllowedRedAmount(BigDecimal maxAllowedRedAmount) {
+	public void setMaxAllowedRedAmount(String maxAllowedRedAmount) {
 		this.maxAllowedRedAmount = maxAllowedRedAmount;
 	}
 

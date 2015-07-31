@@ -1,5 +1,6 @@
 package com.dashboard.controller;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 import javax.persistence.EntityManager;
@@ -22,9 +23,10 @@ public class BankClientController {
 		bankClient.setDateOfBirth(bankClientBean.getDateOfBirth());
 		bankClient.setDateOfCreation(instance.getTime());
 		BankAccountBean bankAccountBean = bankClientBean.getBankAccountBean();
-		BankAccount bankAccount=new BankAccount();
-		bankAccount.setMaxAllowedRedAmount(bankAccountBean.getMaxAllowedRedAmount());
-		bankAccount.setAmount(bankAccountBean.getAmount());
+		BankAccount bankAccount = new BankAccount();
+		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean
+				.getMaxAllowedRedAmount()));
+		bankAccount.setAmount(new BigDecimal(bankAccountBean.getAmount()));
 		bankClient.setBankAccount(bankAccount);
 		EntityManagerHelper.beginTransaction();
 		entityManager.persist(bankClient);
