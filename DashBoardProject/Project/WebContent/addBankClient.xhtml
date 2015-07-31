@@ -10,10 +10,44 @@
 <h:body>
 	<h:form id="form">
 		<p:outputLabel value="first Name"></p:outputLabel>
-<p:inputText value="#{bankClientBean.firstName}"></p:inputText>
+		<p:inputText value="#{bankClientBean.firstName}" required="true">
+			<f:validateLength minimum="2" />
+		</p:inputText>
 		<p:outputLabel value="last Name"></p:outputLabel>
-<p:inputText value="#{bankClientBean.lastName}"></p:inputText>
-	
+		<p:inputText value="#{bankClientBean.lastName}" required="true">
+			<f:validateLength minimum="2" />
+		</p:inputText>
+		<p:outputLabel value="Date of Birth"></p:outputLabel>
+		<p:calendar id="inline" value="#{bankClientBean.dateOfBirth}"
+			required="true" mode="inline">
+			<f:validateLength minimum="2" />
+		</p:calendar>
+
+
+		<p:outputLabel value="Job"></p:outputLabel>
+		<p:inputText value="#{bankClientBean.job}"></p:inputText>
+		<p:outputLabel value="Location"></p:outputLabel>
+		<p:inputText value="#{bankClientBean.location}"></p:inputText>
+
+
+		<p:selectOneMenu id="console"
+			value="#{bankClientBean.bankAccountRank}" style="width:125px">
+			<f:selectItem itemLabel="Excellent" itemValue="Excellent" />
+			<f:selectItem itemLabel="Good" itemValue="good" />
+			<f:selectItem itemLabel="Bad" itemValue="bad" />
+			<f:selectItem itemLabel="Suspecious" itemValue="Suspecious" />
+		</p:selectOneMenu>
+
+		<p:outputLabel value="Amount"></p:outputLabel>
+		<p:inputText value="#{bankClientBean.bankAccountBean.amount}"></p:inputText>
+		<p:outputLabel value="Max Allowed Amount"></p:outputLabel>
+		<p:inputText
+			value="#{bankClientBean.bankAccountBean.maxAllowedRedAmount}"></p:inputText>
+		<p:growl id="growl" life="2000" />
+		<p:commandButton value="Save" id="ajax" update="growl"
+			actionListener="#{bankClientBean.save}"
+			styleClass="ui-priority-primary" />
+
 	</h:form>
 </h:body>
 </html>

@@ -1,5 +1,5 @@
 package com.dashboard.model;
 
 public enum BankClientRank {
-Exellent,Good,Bad,Suspecious
+Excellent,Good,Normal,Bad,Suspecious
 }

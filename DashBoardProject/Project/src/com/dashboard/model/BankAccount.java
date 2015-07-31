@@ -3,11 +3,14 @@ package com.dashboard.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class BankAccount {
@@ -16,11 +19,11 @@ public class BankAccount {
 	private Long number;
 
 	private BigDecimal amount;
-	@OneToOne
-	private BankClient bankClient;
+	
 	private BigDecimal maxAllowedRedAmount;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfCreation;
-	private BankAccountStatus bankAccountStatus;
+	private BankAccountStatus bankAccountStatus=BankAccountStatus.Open;
 
 	public Long getNumber() {
 		return number;
@@ -38,13 +41,7 @@ public class BankAccount {
 		this.amount = amount;
 	}
 
-	public BankClient getBankClient() {
-		return bankClient;
-	}
-
-	public void setBankClient(BankClient bankClient) {
-		this.bankClient = bankClient;
-	}
+	
 
 	public BigDecimal getMaxAllowedRedAmount() {
 		return maxAllowedRedAmount;
