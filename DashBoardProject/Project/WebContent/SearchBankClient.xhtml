@@ -41,9 +41,8 @@
 			</p:column>
 		</p:dataTable>
 
-		<p:commandButton value="Return To Main Menu" id="returnToMainMenu" update="growl"
-			actionListener="#{searchBankClientView.returnToMainMenu}"
-			styleClass="ui-priority-primary" />
+		<p:button value="Return To Main Menu" id="returnToMainMenu"
+			update="growl" outcome="index" styleClass="ui-priority-primary" />
 	</h:form>
 
 </h:body>
