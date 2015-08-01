@@ -19,11 +19,18 @@ import com.dashboard.model.BankClientRank;
 @ManagedBean()
 @SessionScoped
 public class BankClientBean {
-	 public void onDateSelect(SelectEvent event) {
-	        FacesContext facesContext = FacesContext.getCurrentInstance();
-	        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-	        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
-	    }
+	public void onDateSelect(SelectEvent event) {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		facesContext.addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected",
+						format.format(event.getObject())));
+	}
+
+	public String returnToMainMenu(ActionEvent actionEvent) {
+		return "index.html";
+	}
+
 	public void saveBankClient(ActionEvent actionEvent) {
 
 		BankClientController.saveClient(this);
@@ -42,7 +49,7 @@ public class BankClientBean {
 	private BankClientRank bankAccountRank;
 	private String job;
 	private String location;
-	private BankAccountBean bankAccountBean= new BankAccountBean();
+	private BankAccountBean bankAccountBean = new BankAccountBean();
 
 	public String getFirstName() {
 		return firstName;

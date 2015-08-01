@@ -11,10 +11,10 @@
 
 	<h:form>
 		<p:dataTable var="searchBankClientDataTableId"
-			value="#{searchBankClientView.getlistOfBankClient}"
+			value="#{searchBankClientView.getlistOfBankClient()}"
 			widgetVar="searchBankClientDataTableWv"
 			emptyMessage="No Client found with given criteria"
-			filteredValue="#{searchBankClientView.getFilteredBankClient}">
+			filteredValue="#{searchBankClientView.filteredBankClient}">
 
 			<f:facet name="header">
 				<p:outputPanel>
@@ -25,16 +25,25 @@
 				</p:outputPanel>
 			</f:facet>
 
-			<p:column headerText="firstName" footerText="contains">
+			<p:column headerText="firstName"
+				filterBy="#{searchBankClientDataTableId.firstName}">
 				<h:outputText value="#{searchBankClientDataTableId.firstName}" />
 			</p:column>
 
-			<p:column headerText="lastName" footerText="lte">
+			<p:column headerText="lastName"
+				filterBy="#{searchBankClientDataTableId.lastName}">
 
 				<h:outputText value="#{searchBankClientDataTableId.lastName}" />
 			</p:column>
+			<p:column headerText="location">
 
+				<h:outputText value="#{searchBankClientDataTableId.location}" />
+			</p:column>
 		</p:dataTable>
+
+		<p:commandButton value="Return To Main Menu" id="returnToMainMenu" update="growl"
+			actionListener="#{searchBankClientView.returnToMainMenu}"
+			styleClass="ui-priority-primary" />
 	</h:form>
 
 </h:body>

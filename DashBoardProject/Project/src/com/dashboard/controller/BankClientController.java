@@ -2,8 +2,11 @@ package com.dashboard.controller;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+
+import org.hibernate.internal.SessionImpl;
 
 import com.dashboard.model.BankAccount;
 import com.dashboard.model.BankClient;
@@ -32,6 +35,13 @@ public class BankClientController {
 		entityManager.persist(bankClient);
 		EntityManagerHelper.commit();
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<BankClient> getAllBankClients() {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();
+		List<BankClient> list = sessionImpl.createCriteria(BankClient.class).list();
+		return list;
 	}
 
 }
