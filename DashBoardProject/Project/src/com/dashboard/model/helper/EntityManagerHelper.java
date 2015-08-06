@@ -1,15 +1,17 @@
 package com.dashboard.model.helper;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class EntityManagerHelper {
 
-	private static final EntityManagerFactory emf;
-	private static final ThreadLocal<EntityManager> threadLocal;
+	private static EntityManagerFactory emf;
+	private static ThreadLocal<EntityManager> threadLocal;
 
-	static {
-		emf = Persistence.createEntityManagerFactory("dashboardPersistenceUnit");
+	public EntityManagerHelper() {
+		emf = Persistence
+				.createEntityManagerFactory("dashboardPersistenceUnit");
 		threadLocal = new ThreadLocal<EntityManager>();
 	}
 
@@ -46,4 +48,13 @@ public class EntityManagerHelper {
 	public static void commit() {
 		getEntityManager().getTransaction().commit();
 	}
+
+	public static EntityManagerFactory getEmf() {
+		return emf;
+	}
+
+	public static ThreadLocal<EntityManager> getThreadlocal() {
+		return threadLocal;
+	}
+
 }

@@ -28,8 +28,9 @@ public class ViewHelper {
 		bankAccountBean.setAmount(bankAccount.getAmount().toString());
 		bankAccountBean
 				.setBankAccountStatus(bankAccount.getBankAccountStatus());
-		bankAccountBean.setMaxAllowedRedAmount(bankAccount
+		bankAccountBean.setMaxAllowedRedAmount(bankAccount    
 				.getMaxAllowedRedAmount().toString());
+		bankAccountBean.setDateOfCreation(bankAccount.getDateOfCreation());
 		return bankAccountBean;
 	}
 

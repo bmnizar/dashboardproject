@@ -2,6 +2,7 @@ package com.dashboard.controller;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -29,6 +30,8 @@ public class BankClientController {
 		BankAccount bankAccount = new BankAccount();
 		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean
 				.getMaxAllowedRedAmount()));
+		Date dateOfCreation = Calendar.getInstance().getTime();
+		bankAccount.setDateOfCreation(dateOfCreation);
 		bankAccount.setAmount(new BigDecimal(bankAccountBean.getAmount()));
 		bankClient.setBankAccount(bankAccount);
 		EntityManagerHelper.beginTransaction();
@@ -39,8 +42,10 @@ public class BankClientController {
 
 	@SuppressWarnings("unchecked")
 	public static List<BankClient> getAllBankClients() {
-		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();
-		List<BankClient> list = sessionImpl.createCriteria(BankClient.class).list();
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
+				.getEntityManager().getDelegate();
+		List<BankClient> list = sessionImpl.createCriteria(BankClient.class)
+				.list();
 		return list;
 	}
 
