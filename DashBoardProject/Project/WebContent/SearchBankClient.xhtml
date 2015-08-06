@@ -39,6 +39,19 @@
 
 				<h:outputText value="#{searchBankClientDataTableId.location}" />
 			</p:column>
+			<p:column headerText="amount">
+
+				<h:outputText value="#{searchBankClientDataTableId.bankAccountBean.amount}" />
+			</p:column>
+			<p:column headerText="maxAllowedAmount">
+
+				<h:outputText value="#{searchBankClientDataTableId.bankAccountBean.maxAllowedRedAmount}" />
+			</p:column>
+			<p:column headerText="dateOfCreationOfAccount">
+
+				<h:outputText value="#{searchBankClientDataTableId.bankAccountBean.dateOfCreation}" />
+			</p:column>
+						
 		</p:dataTable>
 
 		<p:button value="Return To Main Menu" id="returnToMainMenu"
