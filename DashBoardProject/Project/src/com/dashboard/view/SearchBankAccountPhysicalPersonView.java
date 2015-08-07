@@ -10,28 +10,29 @@ import javax.faces.event.ActionEvent;
 
 import com.dashboard.controller.BankClientController;
 import com.dashboard.model.BankClient;
+import com.dashboard.model.PhysicalPerson;
 
 @ManagedBean()
 @ApplicationScoped
-public class SearchBankClientView implements Serializable {
+public class SearchBankAccountPhysicalPersonView implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private List<BankClientBean> filteredBankClient;
+	private List<PhysicalPersonBean> filteredBankClient;
 
 	public String returnToMainMenu(ActionEvent actionEvent) {
 		return "index.html";
 	}
 
-	public List<BankClientBean> getlistOfBankClient() {
-		List<BankClient> allBankClients = BankClientController
-				.getAllBankClients();
-		List<BankClientBean> listOfBankClient = new ArrayList<>();
-		for (BankClient bankClient : allBankClients) {
-			BankClientBean bankClientBean = ViewHelper
-					.seralizeToViewBankClient(bankClient);
-			listOfBankClient.add(bankClientBean);
+	public List<PhysicalPersonBean> getlistOfPhysicalPersonBean() {
+		List<PhysicalPerson> allPhysicalPersons = BankClientController
+				.getAllPhysicalPerson();
+		List<PhysicalPersonBean> listOfPhysicalPerson = new ArrayList<>();
+		for (PhysicalPerson physicalPerson : allPhysicalPersons) {
+			PhysicalPersonBean bankClientBean = ViewHelper
+					.seralizeToViewPhysicalPerson(physicalPerson);
+			listOfPhysicalPerson.add(bankClientBean);
 		}
-		return listOfBankClient;
+		return listOfPhysicalPerson;
 	}
 
 	public List<BankClientBean> getFilteredBankClient() {

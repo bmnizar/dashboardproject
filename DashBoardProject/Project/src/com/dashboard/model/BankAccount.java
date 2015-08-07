@@ -23,6 +23,8 @@ public class BankAccount {
 	private BigDecimal maxAllowedRedAmount;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOfCreation;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateOfClosing;
 	private BankAccountStatus bankAccountStatus=BankAccountStatus.Open;
 
 	public Long getNumber() {
@@ -65,6 +67,14 @@ public class BankAccount {
 
 	public void setBankAccountStatus(BankAccountStatus bankAccountStatus) {
 		this.bankAccountStatus = bankAccountStatus;
+	}
+
+	public Date getDateOfClosing() {
+		return dateOfClosing;
+	}
+
+	public void setDateOfClosing(Date dateOfClosing) {
+		this.dateOfClosing = dateOfClosing;
 	}
 
 }

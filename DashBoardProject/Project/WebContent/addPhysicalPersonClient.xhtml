@@ -12,20 +12,20 @@
 		<table>
 			<tr>
 				<p:messages id="msgs" />
-				<p:outputLabel>Create New Client</p:outputLabel>
+				<p:outputLabel>Create New Physical Person Client</p:outputLabel>
 			</tr>
 			<tr>
 				<td><p:growl id="growl" life="2000" /> <p:outputLabel
 						value="first Name"></p:outputLabel></td>
 				<td><p:inputText id="firstName"
-						value="#{bankClientBean.firstName}" required="true">
+						value="#{physicalPersonBean.firstName}" required="true">
 						<f:validateLength minimum="2" />
 					</p:inputText> <p:message for="firstName" display="icon" /></td>
 			</tr>
 			<tr>
 				<td><p:outputLabel value="last Name"></p:outputLabel></td>
 				<td><p:inputText id="lastName"
-						value="#{bankClientBean.lastName}" required="true">
+						value="#{physicalPersonBean.lastName}" required="true">
 						<f:validateLength minimum="2" />
 					</p:inputText> <p:message for="lastName" display="icon" /></td>
 			</tr>
@@ -33,25 +33,25 @@
 			<tr>
 				<td><p:outputLabel value="Date of Birth"></p:outputLabel></td>
 				<td><p:calendar id="dateOfBirthId"
-						value="#{bankClientBean.dateOfBirth}" required="true">
+						value="#{physicalPersonBean.dateOfBirth}" required="true">
 						<p:ajax event="dateSelect"
-							listener="#{bankClientBean.onDateSelect}" update="growl" />
+							listener="#{physicalPersonBean.onDateSelect}" update="growl" />
 						<f:validateLength minimum="2" />
 					</p:calendar> <p:message for="dateOfBirthId" display="icon" /></td>
 			</tr>
 			<tr>
 				<td><p:outputLabel value="Job"></p:outputLabel></td>
-				<td><p:inputText value="#{bankClientBean.job}"></p:inputText></td>
+				<td><p:inputText value="#{physicalPersonBean.job}"></p:inputText></td>
 			</tr>
 			<tr>
 				<td><p:outputLabel value="Location"></p:outputLabel></td>
-				<td><p:inputText value="#{bankClientBean.location}"></p:inputText>
+				<td><p:inputText value="#{physicalPersonBean.location}"></p:inputText>
 				</td>
 			</tr>
 			<tr>
 				<td><p:outputLabel value="bankAccountRank"></p:outputLabel></td>
 				<td><p:selectOneMenu id="bankAccountRankId"
-						value="#{bankClientBean.bankAccountRank}" style="width:125px">
+						value="#{physicalPersonBean.bankAccountRank}" style="width:125px">
 						<f:selectItem itemLabel="Excellent" itemValue="Excellent" />
 						<f:selectItem itemLabel="Good" itemValue="good" />
 						<f:selectItem itemLabel="Normal" itemValue="Normal" />
@@ -63,7 +63,7 @@
 			<tr>
 				<td><p:outputLabel value="Amount"></p:outputLabel></td>
 				<td><p:inputText id="amountId"
-						value="#{bankClientBean.bankAccountBean.amount}">
+						value="#{physicalPersonBean.bankAccountBean.amount}">
 
 						<f:validateRegex pattern="\d*" />
 					</p:inputText> <p:message for="amountId" display="icon" /></td>
@@ -72,14 +72,14 @@
 				<td><p:outputLabel value="Max Allowed Amount"></p:outputLabel>
 				</td>
 				<td><p:inputText id="maxAllowedRedAmount"
-						value="#{bankClientBean.bankAccountBean.maxAllowedRedAmount}">
+						value="#{physicalPersonBean.bankAccountBean.maxAllowedRedAmount}">
 						<f:validateRegex pattern="\d*" />
 					</p:inputText> <p:message for="maxAllowedRedAmount" display="icon" /></td>
 			</tr>
 
 			<tr>
 				<td><p:commandButton value="Save" id="ajax" update="growl"
-						actionListener="#{bankClientBean.saveBankClient}"
+						actionListener="#{physicalPersonBean.saveBankClient}"
 						styleClass="ui-priority-primary" /></td>
 				<td><p:button value="Return To Main Menu" id="returnToMainMenu"
 						outcome="index" styleClass="ui-priority-primary" /></td>

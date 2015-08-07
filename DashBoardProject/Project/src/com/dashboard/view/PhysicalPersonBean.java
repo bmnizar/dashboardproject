@@ -18,30 +18,16 @@ import com.dashboard.model.BankClientRank;
 
 @ManagedBean()
 @SessionScoped
-public class BankClientBean {
-	public void onDateSelect(SelectEvent event) {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		facesContext.addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected",
-						format.format(event.getObject())));
-	}
-
-	public String returnToMainMenu(ActionEvent actionEvent) {
-		return "index.html";
-	}
+public class PhysicalPersonBean extends GenericPersonBean{
+	
 
 	public void saveBankClient(ActionEvent actionEvent) {
 
-		BankClientController.saveClient(this);
-		addMessage("Client saved with success");
+		BankClientController.savePhysicalPerson(this);
+		addMessage("Physical Person  saved with success");
 	}
 
-	public void addMessage(String summary) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
-				summary, null);
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
+
 
 	private String firstName;
 	private String lastName;

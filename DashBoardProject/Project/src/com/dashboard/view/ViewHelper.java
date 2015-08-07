@@ -5,7 +5,7 @@ import com.dashboard.model.BankClient;
 
 public class ViewHelper {
 
-	public static BankClientBean seralizeToViewBankClient(BankClient bankClient) {
+	public static PhysicalPersonBean seralizeToViewPhysicalPerson(PhysicalPerson physicalPerson) {
 		BankClientBean bankClientBean = new BankClientBean();
 		bankClientBean.setLocation(bankClient.getLocation());
 		bankClientBean.setFirstName(bankClient.getFirstName());

@@ -10,43 +10,73 @@ import javax.persistence.EntityManager;
 import org.hibernate.internal.SessionImpl;
 
 import com.dashboard.model.BankAccount;
-import com.dashboard.model.BankClient;
+import com.dashboard.model.MoralPerson;
+import com.dashboard.model.PhysicalPerson;
 import com.dashboard.model.helper.EntityManagerHelper;
 import com.dashboard.view.BankAccountBean;
-import com.dashboard.view.BankClientBean;
+import com.dashboard.view.PhysicalPersonBean;
 
 public class BankClientController {
 
-	public static void saveClient(BankClientBean bankClientBean) {
+	public static void savePhysicalPerson(PhysicalPersonBean physicalPersonBean) {
 		Calendar instance = Calendar.getInstance();
 		EntityManager entityManager = EntityManagerHelper.getEntityManager();
-		BankClient bankClient = new BankClient();
-		bankClient.setFirstName(bankClientBean.getFirstName());
-		bankClient.setLastName(bankClientBean.getLastName());
-		bankClient.setJob(bankClientBean.getJob());
-		bankClient.setDateOfBirth(bankClientBean.getDateOfBirth());
-		bankClient.setDateOfCreation(instance.getTime());
-		BankAccountBean bankAccountBean = bankClientBean.getBankAccountBean();
+		PhysicalPerson physicalPerson = new PhysicalPerson();
+		physicalPerson.setFirstName(physicalPersonBean.getFirstName());
+		physicalPerson.setLastName(physicalPersonBean.getLastName());
+		physicalPerson.setJob(physicalPersonBean.getJob());
+		physicalPerson.setDateOfBirth(physicalPersonBean.getDateOfBirth());
+		physicalPerson.setDateOfCreation(instance.getTime());
+		BankAccountBean bankAccountBean = physicalPersonBean
+				.getBankAccountBean();
 		BankAccount bankAccount = new BankAccount();
 		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean
 				.getMaxAllowedRedAmount()));
 		Date dateOfCreation = Calendar.getInstance().getTime();
 		bankAccount.setDateOfCreation(dateOfCreation);
 		bankAccount.setAmount(new BigDecimal(bankAccountBean.getAmount()));
-		bankClient.setBankAccount(bankAccount);
+		physicalPerson.setBankAccount(bankAccount);
 		EntityManagerHelper.beginTransaction();
-		entityManager.persist(bankClient);
+		entityManager.persist(physicalPerson);
+		EntityManagerHelper.commit();
+
+	}
+
+	public static void saveMoralPerson(MoralPersonBean moralPersonBean) {
+		Calendar instance = Calendar.getInstance();
+		EntityManager entityManager = EntityManagerHelper.getEntityManager();
+		MoralPerson moralPerson = new MoralPerson();
+		moralPerson.setName(moralPersonBean.getName());
+
+		moralPerson.setDateOfCreation(instance.getTime());
+		BankAccountBean bankAccountBean = moralPersonBean.getBankAccountBean();
+		BankAccount bankAccount = new BankAccount();
+		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean
+				.getMaxAllowedRedAmount()));
+		Date dateOfCreation = Calendar.getInstance().getTime();
+		bankAccount.setDateOfCreation(dateOfCreation);
+		bankAccount.setAmount(new BigDecimal(bankAccountBean.getAmount()));
+		moralPerson.setBankAccount(bankAccount);
+		EntityManagerHelper.beginTransaction();
+		entityManager.persist(moralPerson);
 		EntityManagerHelper.commit();
 
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<BankClient> getAllBankClients() {
+	public static List<PhysicalPerson> getAllPhysicalPerson() {
 		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
 				.getEntityManager().getDelegate();
-		List<BankClient> list = sessionImpl.createCriteria(BankClient.class)
+		List<PhysicalPerson> list = sessionImpl.createCriteria(PhysicalPerson.class)
 				.list();
 		return list;
 	}
-
+	@SuppressWarnings("unchecked")
+	public static List<PhysicalPerson> getAllMoralPerson() {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
+				.getEntityManager().getDelegate();
+		List<PhysicalPerson> list = sessionImpl.createCriteria(PhysicalPerson.class)
+				.list();
+		return list;
+	}
 }

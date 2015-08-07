@@ -10,11 +10,15 @@
 <h:body>
 
 	<h:form>
-		<p:dataTable var="searchBankClientDataTableId"
-			value="#{searchBankClientView.getlistOfBankClient()}"
-			widgetVar="searchBankClientDataTableWv"
+		<p:dataTable var="searchBankAccountPhysicalPersonDataTableId"
+			value="#{searchBankAccountPhysicalPersonView.getlistOfBankClient()}"
+			widgetVar="searchBankAccountPhysicalPersonDataTableWv"
 			emptyMessage="No Client found with given criteria"
-			filteredValue="#{searchBankClientView.filteredBankClient}">
+			filteredValue="#{searchBankAccountPhysicalPersonView.filteredBankClient}"
+			paginator="true" rows="10"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			selection="#{searchBankAccountPhysicalPersonView.selectedBankAccount}" lazy="true"  >
 
 			<f:facet name="header">
 				<p:outputPanel>
@@ -41,17 +45,20 @@
 			</p:column>
 			<p:column headerText="amount">
 
-				<h:outputText value="#{searchBankClientDataTableId.bankAccountBean.amount}" />
+				<h:outputText
+					value="#{searchBankClientDataTableId.bankAccountBean.amount}" />
 			</p:column>
 			<p:column headerText="maxAllowedAmount">
 
-				<h:outputText value="#{searchBankClientDataTableId.bankAccountBean.maxAllowedRedAmount}" />
+				<h:outputText
+					value="#{searchBankClientDataTableId.bankAccountBean.maxAllowedRedAmount}" />
 			</p:column>
 			<p:column headerText="dateOfCreationOfAccount">
 
-				<h:outputText value="#{searchBankClientDataTableId.bankAccountBean.dateOfCreation}" />
+				<h:outputText
+					value="#{searchBankClientDataTableId.bankAccountBean.dateOfCreation}" />
 			</p:column>
-						
+
 		</p:dataTable>
 
 		<p:button value="Return To Main Menu" id="returnToMainMenu"
