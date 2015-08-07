@@ -55,4 +55,9 @@ public class PhysicalPerson extends Person {
 		this.job = job;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return id.toString();
+	}
 }

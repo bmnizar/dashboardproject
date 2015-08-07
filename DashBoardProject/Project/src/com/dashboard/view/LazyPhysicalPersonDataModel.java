@@ -24,16 +24,22 @@ public class LazyPhysicalPersonDataModel<T extends PhysicalPersonBean> extends
 		this.datasource = datasource;
 	}
 
+	// @Override
+	// public PhysicalPersonBean getRowData(String rowKey) {
+	// System.out.println();
+	// return null;
+	// }
 	@Override
 	public PhysicalPersonBean getRowData(String rowKey) {
-		System.out.println();
-		return null;
+		// TODO Auto-generated method stub
+		return super.getRowData(rowKey);
 	}
 
 	@Override
 	public Object getRowKey(PhysicalPersonBean physicalPersonBean) {
-		return physicalPersonBean.getFirstName() + " "
+		String id = physicalPersonBean.getFirstName() + " "
 				+ physicalPersonBean.getLastName();
+		return id;
 
 	}
 

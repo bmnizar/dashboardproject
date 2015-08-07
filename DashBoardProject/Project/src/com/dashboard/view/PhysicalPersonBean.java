@@ -1,25 +1,19 @@
 package com.dashboard.view;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.persistence.Temporal;
-
-import org.primefaces.event.SelectEvent;
 
 import com.dashboard.controller.BankClientController;
-import com.dashboard.model.BankAccount;
 import com.dashboard.model.BankClientRank;
 
 @ManagedBean()
 @SessionScoped
-public class PhysicalPersonBean extends GenericPersonBean implements Serializable{
+public class PhysicalPersonBean extends GenericPersonBean implements
+		Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,8 +23,7 @@ public class PhysicalPersonBean extends GenericPersonBean implements Serializabl
 		addMessage("Physical Person  saved with success");
 	}
 
-
-
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
@@ -38,6 +31,14 @@ public class PhysicalPersonBean extends GenericPersonBean implements Serializabl
 	private String job;
 	private String location;
 	private BankAccountBean bankAccountBean = new BankAccountBean();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -95,4 +96,9 @@ public class PhysicalPersonBean extends GenericPersonBean implements Serializabl
 		this.bankAccountBean = bankAccountBean;
 	}
 
+	@Override
+	public String toString() {
+
+		return id.toString();
+	}
 }

@@ -1,5 +1,6 @@
 package com.dashboard.view;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,7 +14,7 @@ import com.dashboard.model.BankAccountStatus;
 
 @ManagedBean()
 @SessionScoped
-public class BankAccountBean {
+public class BankAccountBean  implements Serializable {
 
 	private String amount;
 

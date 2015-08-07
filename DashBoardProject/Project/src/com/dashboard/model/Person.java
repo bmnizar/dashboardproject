@@ -21,17 +21,17 @@ import javax.persistence.TemporalType;
 public abstract class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String location;
+	protected Long id;
+	protected String location;
 	@OneToMany(fetch = FetchType.LAZY)
-	private Set<BankLoan> bankLoans;
+	protected Set<BankLoan> bankLoans;
 
 	@OneToOne(cascade = CascadeType.PERSIST, optional = false)
-	private BankAccount bankAccount;
+	protected BankAccount bankAccount;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateOfCreation;
-	private BankClientRank bankAccountRank = BankClientRank.Normal;
+	protected Date dateOfCreation;
+	protected BankClientRank bankAccountRank = BankClientRank.Normal;
 
 	public Long getId() {
 		return id;
@@ -81,4 +81,9 @@ public abstract class Person {
 		this.bankAccountRank = bankAccountRank;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 }
