@@ -90,8 +90,9 @@ public class BankClientController {
 				.getEntityManager().getDelegate();
 		Criteria createCriteria = sessionImpl
 				.createCriteria(PhysicalPerson.class);
-		createCriteria.setMaxResults(first);
-		createCriteria.setFirstResult(pageSize);
+
+		createCriteria.setFirstResult(first);
+		createCriteria.setMaxResults(pageSize);
 		List<PhysicalPerson> list = createCriteria.list();
 		return list;
 	}
