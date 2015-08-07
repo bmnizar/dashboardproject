@@ -1,16 +1,15 @@
-package com.dashboard.controller;
+package com.dashboard.view;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 
-import com.dashboard.view.BankAccountBean;
-import com.dashboard.view.GenericPersonBean;
+import com.dashboard.controller.BankClientController;
 
 @ManagedBean()
 @SessionScoped
 public class MoralPersonBean extends GenericPersonBean {
-	public void saveBankClient(ActionEvent actionEvent) {
+	public void saveMoralPerson(ActionEvent actionEvent) {
 
 		BankClientController.saveMoralPerson(this);
 		addMessage("Moral Person  saved with success");

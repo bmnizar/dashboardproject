@@ -14,6 +14,7 @@ import com.dashboard.model.MoralPerson;
 import com.dashboard.model.PhysicalPerson;
 import com.dashboard.model.helper.EntityManagerHelper;
 import com.dashboard.view.BankAccountBean;
+import com.dashboard.view.MoralPersonBean;
 import com.dashboard.view.PhysicalPersonBean;
 
 public class BankClientController {

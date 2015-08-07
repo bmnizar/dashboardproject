@@ -1,5 +1,6 @@
 package com.dashboard.view;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,10 +19,11 @@ import com.dashboard.model.BankClientRank;
 
 @ManagedBean()
 @SessionScoped
-public class PhysicalPersonBean extends GenericPersonBean{
-	
+public class PhysicalPersonBean extends GenericPersonBean implements Serializable{
 
-	public void saveBankClient(ActionEvent actionEvent) {
+	private static final long serialVersionUID = 1L;
+
+	public void savePhysicalperson(ActionEvent actionEvent) {
 
 		BankClientController.savePhysicalPerson(this);
 		addMessage("Physical Person  saved with success");

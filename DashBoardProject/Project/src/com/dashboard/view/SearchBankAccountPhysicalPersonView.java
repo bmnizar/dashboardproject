@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.event.ActionEvent;
 
 import com.dashboard.controller.BankClientController;
-import com.dashboard.model.BankClient;
 import com.dashboard.model.PhysicalPerson;
 
 @ManagedBean()
@@ -17,7 +16,8 @@ import com.dashboard.model.PhysicalPerson;
 public class SearchBankAccountPhysicalPersonView implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private List<PhysicalPersonBean> filteredBankClient;
+	private List<PhysicalPersonBean> filteredPhysicalPerson;
+	private PhysicalPersonBean selectedPhysicalPerson;
 
 	public String returnToMainMenu(ActionEvent actionEvent) {
 		return "index.html";
@@ -35,12 +35,21 @@ public class SearchBankAccountPhysicalPersonView implements Serializable {
 		return listOfPhysicalPerson;
 	}
 
-	public List<BankClientBean> getFilteredBankClient() {
-		return filteredBankClient;
+	public List<PhysicalPersonBean> getFilteredPhysicalPerson() {
+		return filteredPhysicalPerson;
 	}
 
-	public void setFilteredBankClient(List<BankClientBean> filteredBankClient) {
-		this.filteredBankClient = filteredBankClient;
+	public void setFilteredPhysicalPerson(
+			List<PhysicalPersonBean> filteredPhysicalPerson) {
+		this.filteredPhysicalPerson = filteredPhysicalPerson;
+	}
+
+	public PhysicalPersonBean getSelectedPhysicalPerson() {
+		return selectedPhysicalPerson;
+	}
+
+	public void setSelectedPhysicalPerson(PhysicalPersonBean selectedPhysicalPerson) {
+		this.selectedPhysicalPerson = selectedPhysicalPerson;
 	}
 
 }

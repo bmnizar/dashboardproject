@@ -9,6 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public class BankLoan {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

@@ -1,25 +1,25 @@
 package com.dashboard.view;
 
 import com.dashboard.model.BankAccount;
-import com.dashboard.model.BankClient;
+import com.dashboard.model.PhysicalPerson;
 
 public class ViewHelper {
 
 	public static PhysicalPersonBean seralizeToViewPhysicalPerson(PhysicalPerson physicalPerson) {
-		BankClientBean bankClientBean = new BankClientBean();
-		bankClientBean.setLocation(bankClient.getLocation());
-		bankClientBean.setFirstName(bankClient.getFirstName());
-		bankClientBean.setLastName(bankClient.getLastName());
-		bankClientBean.setDateOfBirth(bankClient.getDateOfBirth());
-		bankClientBean.setBankAccountRank(bankClient.getBankAccountRank());
-		BankAccount bankAccount = bankClient.getBankAccount();
+		PhysicalPersonBean physicalPersonBean = new PhysicalPersonBean();
+		physicalPersonBean.setLocation(physicalPerson.getLocation());
+		physicalPersonBean.setFirstName(physicalPerson.getFirstName());
+		physicalPersonBean.setLastName(physicalPerson.getLastName());
+		physicalPersonBean.setDateOfBirth(physicalPerson.getDateOfBirth());
+		physicalPersonBean.setBankAccountRank(physicalPerson.getBankAccountRank());
+		BankAccount bankAccount = physicalPerson.getBankAccount();
 		if (bankAccount != null) {
 			BankAccountBean bankAccountBean = seralizeToViewBankAccount(bankAccount);
 
-			bankClientBean.setBankAccountBean(bankAccountBean);
+			physicalPersonBean.setBankAccountBean(bankAccountBean);
 
 		}
-		return bankClientBean;
+		return physicalPersonBean;
 	}
 
 	public static com.dashboard.view.BankAccountBean seralizeToViewBankAccount(
