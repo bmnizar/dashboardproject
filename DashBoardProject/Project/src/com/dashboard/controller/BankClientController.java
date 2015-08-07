@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.hibernate.Criteria;
 import org.hibernate.internal.SessionImpl;
 
 import com.dashboard.model.BankAccount;
@@ -68,16 +69,30 @@ public class BankClientController {
 	public static List<PhysicalPerson> getAllPhysicalPerson() {
 		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
 				.getEntityManager().getDelegate();
-		List<PhysicalPerson> list = sessionImpl.createCriteria(PhysicalPerson.class)
-				.list();
+		List<PhysicalPerson> list = sessionImpl.createCriteria(
+				PhysicalPerson.class).list();
 		return list;
 	}
+
 	@SuppressWarnings("unchecked")
 	public static List<PhysicalPerson> getAllMoralPerson() {
 		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
 				.getEntityManager().getDelegate();
-		List<PhysicalPerson> list = sessionImpl.createCriteria(PhysicalPerson.class)
-				.list();
+		List<PhysicalPerson> list = sessionImpl.createCriteria(
+				PhysicalPerson.class).list();
+		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<PhysicalPerson> getAllPhysicalPersonByPaging(int first,
+			int pageSize) {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
+				.getEntityManager().getDelegate();
+		Criteria createCriteria = sessionImpl
+				.createCriteria(PhysicalPerson.class);
+		createCriteria.setMaxResults(first);
+		createCriteria.setFirstResult(pageSize);
+		List<PhysicalPerson> list = createCriteria.list();
 		return list;
 	}
 }

@@ -18,21 +18,10 @@ public class SearchBankAccountPhysicalPersonView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<PhysicalPersonBean> filteredPhysicalPerson;
 	private PhysicalPersonBean selectedPhysicalPerson;
+	private LazyPhysicalPersonDataModel<PhysicalPersonBean> lazyModel;
 
 	public String returnToMainMenu(ActionEvent actionEvent) {
 		return "index.html";
-	}
-
-	public List<PhysicalPersonBean> getlistOfPhysicalPersonBean() {
-		List<PhysicalPerson> allPhysicalPersons = BankClientController
-				.getAllPhysicalPerson();
-		List<PhysicalPersonBean> listOfPhysicalPerson = new ArrayList<>();
-		for (PhysicalPerson physicalPerson : allPhysicalPersons) {
-			PhysicalPersonBean bankClientBean = ViewHelper
-					.seralizeToViewPhysicalPerson(physicalPerson);
-			listOfPhysicalPerson.add(bankClientBean);
-		}
-		return listOfPhysicalPerson;
 	}
 
 	public List<PhysicalPersonBean> getFilteredPhysicalPerson() {
@@ -48,8 +37,20 @@ public class SearchBankAccountPhysicalPersonView implements Serializable {
 		return selectedPhysicalPerson;
 	}
 
-	public void setSelectedPhysicalPerson(PhysicalPersonBean selectedPhysicalPerson) {
+	public void setSelectedPhysicalPerson(
+			PhysicalPersonBean selectedPhysicalPerson) {
 		this.selectedPhysicalPerson = selectedPhysicalPerson;
 	}
+
+	public LazyPhysicalPersonDataModel<PhysicalPersonBean> getLazyModel() {
+		return lazyModel;
+	}
+
+	public void setLazyModel(
+			LazyPhysicalPersonDataModel<PhysicalPersonBean> lazyModel) {
+		this.lazyModel = lazyModel;
+	}
+
+	
 
 }

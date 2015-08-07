@@ -11,7 +11,7 @@
 
 	<h:form>
 		<p:dataTable var="searchBankAccountPhysicalPersonDataTableId"
-			value="#{searchBankAccountPhysicalPersonView.getlistOfPhysicalPersonBean()}"
+			value="#{searchBankAccountPhysicalPersonView.lazyModel}"
 			widgetVar="searchBankAccountPhysicalPersonDataTableWv"
 			emptyMessage="No Client found with given criteria"
 			filteredValue="#{searchBankAccountPhysicalPersonView.filteredPhysicalPerson}"
