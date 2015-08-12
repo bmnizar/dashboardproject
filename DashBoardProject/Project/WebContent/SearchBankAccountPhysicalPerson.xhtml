@@ -30,33 +30,33 @@
 			</f:facet>
 
 			<p:column headerText="firstName"
-				filterBy="#{searchBankClientDataTableId.firstName}">
-				<h:outputText value="#{searchBankClientDataTableId.firstName}" />
+				filterBy="#{searchBankAccountPhysicalPersonDataTableId.firstName}">
+				<h:outputText value="#{searchBankAccountPhysicalPersonDataTableId.firstName}" />
 			</p:column>
 
 			<p:column headerText="lastName"
-				filterBy="#{searchBankClientDataTableId.lastName}">
+				filterBy="#{searchBankAccountPhysicalPersonDataTableId.lastName}">
 
-				<h:outputText value="#{searchBankClientDataTableId.lastName}" />
+				<h:outputText value="#{searchBankAccountPhysicalPersonDataTableId.lastName}" />
 			</p:column>
-			<p:column headerText="location">
+			<p:column headerText="location" filterBy="#{searchBankAccountPhysicalPersonDataTableId.location}">
 
-				<h:outputText value="#{searchBankClientDataTableId.location}" />
+				<h:outputText value="#{searchBankAccountPhysicalPersonDataTableId.location}" />
 			</p:column>
-			<p:column headerText="amount">
-
+			<p:column headerText="amount"> 
+ 
 				<h:outputText
-					value="#{searchBankClientDataTableId.bankAccountBean.amount}" />
+					value="#{searchBankAccountPhysicalPersonDataTableId.bankAccountBean.amount}" />
 			</p:column>
 			<p:column headerText="maxAllowedAmount">
-
+  
 				<h:outputText
-					value="#{searchBankClientDataTableId.bankAccountBean.maxAllowedRedAmount}" />
+					value="#{searchBankAccountPhysicalPersonDataTableId.bankAccountBean.maxAllowedRedAmount}" />
 			</p:column>
 			<p:column headerText="dateOfCreationOfAccount">
 
 				<h:outputText
-					value="#{searchBankClientDataTableId.bankAccountBean.dateOfCreation}" />
+					value="#{searchBankAccountPhysicalPersonDataTableId.bankAccountBean.dateOfCreation}" />
 			</p:column>
 
 		</p:dataTable>
@@ -64,6 +64,6 @@
 		<p:button value="Return To Main Menu" id="returnToMainMenu"
 			update="growl" outcome="index" styleClass="ui-priority-primary" />
 	</h:form>
-
+ 
 </h:body>
 </html>

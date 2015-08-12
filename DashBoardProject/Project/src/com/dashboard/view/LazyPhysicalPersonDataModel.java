@@ -37,10 +37,9 @@ public class LazyPhysicalPersonDataModel<T extends PhysicalPersonBean> extends
 
 	@Override
 	public Object getRowKey(PhysicalPersonBean physicalPersonBean) {
-		String id = physicalPersonBean.getFirstName() + " "
-				+ physicalPersonBean.getLastName();
+		String id = physicalPersonBean.getId().toString();
 		return id;
-
+  
 	}
 
 	@Override

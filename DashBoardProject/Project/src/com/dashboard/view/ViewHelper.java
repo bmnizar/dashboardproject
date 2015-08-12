@@ -6,7 +6,9 @@ import com.dashboard.model.PhysicalPerson;
 public class ViewHelper {
 
 	public static PhysicalPersonBean seralizeToViewPhysicalPerson(PhysicalPerson physicalPerson) {
-		PhysicalPersonBean physicalPersonBean = new PhysicalPersonBean();
+		PhysicalPersonBean physicalPersonBean = new PhysicalPersonBean();  
+		physicalPersonBean.setId(physicalPerson.getId());
+
 		physicalPersonBean.setLocation(physicalPerson.getLocation());
 		physicalPersonBean.setFirstName(physicalPerson.getFirstName());
 		physicalPersonBean.setLastName(physicalPerson.getLastName());
@@ -22,14 +24,11 @@ public class ViewHelper {
 		return physicalPersonBean;
 	}
 
-	public static com.dashboard.view.BankAccountBean seralizeToViewBankAccount(
-			BankAccount bankAccount) {
+	public static com.dashboard.view.BankAccountBean seralizeToViewBankAccount(BankAccount bankAccount) {
 		BankAccountBean bankAccountBean = new BankAccountBean();
 		bankAccountBean.setAmount(bankAccount.getAmount().toString());
-		bankAccountBean
-				.setBankAccountStatus(bankAccount.getBankAccountStatus());
-		bankAccountBean.setMaxAllowedRedAmount(bankAccount    
-				.getMaxAllowedRedAmount().toString());
+		bankAccountBean.setBankAccountStatus(bankAccount.getBankAccountStatus());
+		bankAccountBean.setMaxAllowedRedAmount(bankAccount.getMaxAllowedRedAmount().toString());
 		bankAccountBean.setDateOfCreation(bankAccount.getDateOfCreation());
 		return bankAccountBean;
 	}
