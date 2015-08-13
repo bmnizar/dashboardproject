@@ -10,15 +10,16 @@
 <h:body>
 
 	<h:form>
-		<p:dataTable var="searchBankAccountPhysicalPersonDataTableId"
-			value="#{searchBankAccountMoralPersonView.getlistOfPhysicalPersonBean()}"
-			widgetVar="searchBankAccountPhysicalPersonDataTableWv"
+		<p:dataTable var="searchBankAccountMoralPersonDataTableId"
+			value="#{searchBankAccountMoralPersonView.lazyModel}"
+			widgetVar="searchBankAccountMoralPersonDataTableWv"
 			emptyMessage="No Client found with given criteria"
-			filteredValue="#{searchBankAccountMoralPersonView.filteredPhysicalPerson}"
+			filteredValue="#{searchBankAccountMoralPersonView.filteredMoralPerson}"
 			paginator="true" rows="10"
 			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 			rowsPerPageTemplate="5,10,15" selectionMode="single"
-			selection="#{searchBankAccountMoralPersonView.selectedPhysicalPerson}" lazy="true"  >
+			selection="#{searchBankAccountMoralPersonView.selectedMoralPerson}"
+			lazy="true">
 
 			<f:facet name="header">
 				<p:outputPanel>
@@ -29,35 +30,45 @@
 				</p:outputPanel>
 			</f:facet>
 
-			<p:column headerText="firstName"
-				filterBy="#{searchBankClientDataTableId.firstName}">
-				<h:outputText value="#{searchBankClientDataTableId.firstName}" />
+			<p:column headerText="name"
+				filterBy="#{searchBankAccountMoralPersonDataTableId.name}">
+				<h:outputText
+					value="#{searchBankAccountMoralPersonDataTableId.name}" />
 			</p:column>
 
-			<p:column headerText="lastName"
-				filterBy="#{searchBankClientDataTableId.lastName}">
+			<p:column headerText="registrationId"
+				filterBy="#{searchBankAccountMoralPersonDataTableId.registrationId}">
 
-				<h:outputText value="#{searchBankClientDataTableId.lastName}" />
+				<h:outputText
+					value="#{searchBankAccountMoralPersonDataTableId.registrationId}" />
 			</p:column>
-			<p:column headerText="location">
+			<p:column headerText="location"
+				filterBy="#{searchBankAccountMoralPersonDataTableId.location}">
 
-				<h:outputText value="#{searchBankClientDataTableId.location}" />
+				<h:outputText
+					value="#{searchBankAccountMoralPersonDataTableId.location}" />
+			</p:column>
+			<p:column headerText="dateOfExpiry">
+
+				<h:outputText
+					value="#{searchBankAccountMoralPersonDataTableId.dateOfExpiry}" />
+			</p:column>
+			<p:column headerText="dateOfCreation">
+
+				<h:outputText
+					value="#{searchBankAccountMoralPersonDataTableId.dateOfCreation}" />
 			</p:column>
 			<p:column headerText="amount">
 
 				<h:outputText
-					value="#{searchBankClientDataTableId.bankAccountBean.amount}" />
+					value="#{searchBankAccountMoralPersonDataTableId.bankAccountBean.amount}" />
 			</p:column>
 			<p:column headerText="maxAllowedAmount">
 
 				<h:outputText
-					value="#{searchBankClientDataTableId.bankAccountBean.maxAllowedRedAmount}" />
+					value="#{searchBankAccountMoralPersonDataTableId.bankAccountBean.maxAllowedRedAmount}" />
 			</p:column>
-			<p:column headerText="dateOfCreationOfAccount">
 
-				<h:outputText
-					value="#{searchBankClientDataTableId.bankAccountBean.dateOfCreation}" />
-			</p:column>
 
 		</p:dataTable>
 

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
 import org.hibernate.internal.SessionImpl;
 
+import com.dashboard.helper.DashboardHelper;
 import com.dashboard.model.BankAccount;
 import com.dashboard.model.MoralPerson;
 import com.dashboard.model.PhysicalPerson;
@@ -29,11 +30,9 @@ public class BankClientController {
 		physicalPerson.setJob(physicalPersonBean.getJob());
 		physicalPerson.setDateOfBirth(physicalPersonBean.getDateOfBirth());
 		physicalPerson.setDateOfCreation(instance.getTime());
-		BankAccountBean bankAccountBean = physicalPersonBean
-				.getBankAccountBean();
+		BankAccountBean bankAccountBean = physicalPersonBean.getBankAccountBean();
 		BankAccount bankAccount = new BankAccount();
-		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean
-				.getMaxAllowedRedAmount()));
+		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean.getMaxAllowedRedAmount()));
 		Date dateOfCreation = Calendar.getInstance().getTime();
 		bankAccount.setDateOfCreation(dateOfCreation);
 		bankAccount.setAmount(new BigDecimal(bankAccountBean.getAmount()));
@@ -49,12 +48,12 @@ public class BankClientController {
 		EntityManager entityManager = EntityManagerHelper.getEntityManager();
 		MoralPerson moralPerson = new MoralPerson();
 		moralPerson.setName(moralPersonBean.getName());
-
+		moralPerson.setRegistrationId(moralPersonBean.getRegistrationId());
+		moralPerson.setDateOfExpiry(DashboardHelper.getDateOfExpiryMoralPerson());
 		moralPerson.setDateOfCreation(instance.getTime());
 		BankAccountBean bankAccountBean = moralPersonBean.getBankAccountBean();
 		BankAccount bankAccount = new BankAccount();
-		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean
-				.getMaxAllowedRedAmount()));
+		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean.getMaxAllowedRedAmount()));
 		Date dateOfCreation = Calendar.getInstance().getTime();
 		bankAccount.setDateOfCreation(dateOfCreation);
 		bankAccount.setAmount(new BigDecimal(bankAccountBean.getAmount()));
@@ -67,42 +66,33 @@ public class BankClientController {
 
 	@SuppressWarnings("unchecked")
 	public static List<PhysicalPerson> getAllPhysicalPerson() {
-		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
-				.getEntityManager().getDelegate();
-		List<PhysicalPerson> list = sessionImpl.createCriteria(
-				PhysicalPerson.class).list();
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();
+		List<PhysicalPerson> list = sessionImpl.createCriteria(PhysicalPerson.class).list();
 		return list;
 	}
 
 	@SuppressWarnings("unchecked")
 	public static List<PhysicalPerson> getAllMoralPerson() {
-		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
-				.getEntityManager().getDelegate();
-		List<PhysicalPerson> list = sessionImpl.createCriteria(
-				PhysicalPerson.class).list();
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();
+		List<PhysicalPerson> list = sessionImpl.createCriteria(PhysicalPerson.class).list();
 		return list;
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<PhysicalPerson> getAllPhysicalPersonByPaging(int first,
-			int pageSize) {
-		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
-				.getEntityManager().getDelegate();
-		Criteria createCriteria = sessionImpl
-				.createCriteria(PhysicalPerson.class);
+	public static List<PhysicalPerson> getAllPhysicalPersonByPaging(int first, int pageSize) {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();
+		Criteria createCriteria = sessionImpl.createCriteria(PhysicalPerson.class);
 
 		createCriteria.setFirstResult(first);
 		createCriteria.setMaxResults(pageSize);
 		List<PhysicalPerson> list = createCriteria.list();
 		return list;
 	}
+
 	@SuppressWarnings("unchecked")
-	public static List<MoralPerson> getAllMoralPersonByPaging(int first,
-			int pageSize) {
-		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
-				.getEntityManager().getDelegate();
-		Criteria createCriteria = sessionImpl
-				.createCriteria(MoralPerson.class);
+	public static List<MoralPerson> getAllMoralPersonByPaging(int first, int pageSize) {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();
+		Criteria createCriteria = sessionImpl.createCriteria(MoralPerson.class);
 
 		createCriteria.setFirstResult(first);
 		createCriteria.setMaxResults(pageSize);

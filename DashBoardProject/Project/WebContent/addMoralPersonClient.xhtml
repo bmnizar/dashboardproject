@@ -17,12 +17,19 @@
 			<tr>
 				<td><p:growl id="growl" life="2000" /> <p:outputLabel
 						value="Name"></p:outputLabel></td>
-				<td><p:inputText id="name"
-						value="#{moralPersonBean.name}" required="true">
+				<td><p:inputText id="name" value="#{moralPersonBean.name}"
+						required="true">
 						<f:validateLength minimum="2" />
 					</p:inputText> <p:message for="name" display="icon" /></td>
 			</tr>
-		
+			<tr>
+				<td><p:growl id="growl" life="2000" /> <p:outputLabel
+						value="registrationId"></p:outputLabel></td>
+				<td><p:inputText id="registrationId"
+						value="#{moralPersonBean.registrationId}" required="true">
+						<f:validateLength minimum="2" />
+					</p:inputText> <p:message for="name" display="icon" /></td>
+			</tr>
 			<tr>
 				<td><p:outputLabel value="bankAccountRank"></p:outputLabel></td>
 				<td><p:selectOneMenu id="bankAccountRankId"
@@ -59,7 +66,7 @@
 				<td><p:button value="Return To Main Menu" id="returnToMainMenu"
 						outcome="index" styleClass="ui-priority-primary" /></td>
 			</tr>
-		</table> 
+		</table>
 	</h:form>
 </h:body>
 </html>
