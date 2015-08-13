@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.internal.SessionImpl;
 
 import com.dashboard.helper.DashboardHelper;
@@ -20,6 +21,19 @@ import com.dashboard.view.moralPerson.MoralPersonBean;
 import com.dashboard.view.physicalPerson.PhysicalPersonBean;
 
 public class BankClientController {
+	public static Integer getTotalNumberOfPhysicalPersons() {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();
+		Criteria createCriteria = sessionImpl.createCriteria(PhysicalPerson.class);
+		Long uniqueResult = (Long) createCriteria.setProjection(Projections.rowCount()).uniqueResult();
+		return uniqueResult.intValue();
+	}
+
+	public static Integer getTotalNumberOfMoralPersons() {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper.getEntityManager().getDelegate();    
+		Criteria createCriteria = sessionImpl.createCriteria(MoralPerson.class);
+		Long uniqueResult = (Long) createCriteria.setProjection(Projections.rowCount()).uniqueResult();
+		return uniqueResult.intValue();
+	}
 
 	public static void savePhysicalPerson(PhysicalPersonBean physicalPersonBean) {
 		Calendar instance = Calendar.getInstance();
@@ -51,6 +65,7 @@ public class BankClientController {
 		moralPerson.setRegistrationId(moralPersonBean.getRegistrationId());
 		moralPerson.setDateOfExpiry(DashboardHelper.getDateOfExpiryMoralPerson());
 		moralPerson.setDateOfCreation(instance.getTime());
+		moralPerson.setLocation(moralPersonBean.getLocation());
 		BankAccountBean bankAccountBean = moralPersonBean.getBankAccountBean();
 		BankAccount bankAccount = new BankAccount();
 		bankAccount.setMaxAllowedRedAmount(new BigDecimal(bankAccountBean.getMaxAllowedRedAmount()));

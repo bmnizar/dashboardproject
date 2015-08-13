@@ -13,6 +13,9 @@ import com.dashboard.view.GenericPersonBean;
 @ManagedBean()
 @SessionScoped
 public class MoralPersonBean extends GenericPersonBean {
+
+	private static final long serialVersionUID = 1L;
+
 	private BankAccountBean bankAccountBean = new BankAccountBean();
 
 	private String name;

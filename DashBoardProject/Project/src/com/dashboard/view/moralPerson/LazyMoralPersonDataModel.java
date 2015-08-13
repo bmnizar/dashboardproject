@@ -51,7 +51,8 @@ public class LazyMoralPersonDataModel<T extends MoralPersonBean> extends
 					.seralizeToViewMoralPerson(moralPerson);
 			listOfMoralPerson.add(bankClientBean);
 		}
-		this.setRowCount(listOfMoralPerson.size());
+		Integer totalNumberOfMoralPersons = BankClientController.getTotalNumberOfMoralPersons();
+		this.setRowCount(totalNumberOfMoralPersons);
 		return listOfMoralPerson;
 	}
 

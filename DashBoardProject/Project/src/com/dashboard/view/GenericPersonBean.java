@@ -1,5 +1,6 @@
 package com.dashboard.view;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import javax.faces.application.FacesMessage;
@@ -10,7 +11,9 @@ import org.primefaces.event.SelectEvent;
 
 import com.dashboard.model.BankClientRank;
 
-public class GenericPersonBean {
+public class GenericPersonBean implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	protected Long id;
 	protected String location;
 	protected BankClientRank bankAccountRank = BankClientRank.Normal;

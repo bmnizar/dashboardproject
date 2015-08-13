@@ -9,7 +9,6 @@ public class MoralPerson extends Person {
 	private String name;
 	private String registrationId;
 	private Date dateOfExpiry;
-	private Date dateOfCreation;
 
 	public String getRegistrationId() {
 		return registrationId;
@@ -25,14 +24,6 @@ public class MoralPerson extends Person {
 
 	public void setDateOfExpiry(Date dateOfExpiry) {
 		this.dateOfExpiry = dateOfExpiry;
-	}
-
-	public Date getDateOfCreation() {
-		return dateOfCreation;
-	}
-
-	public void setDateOfCreation(Date dateOfCreation) {
-		this.dateOfCreation = dateOfCreation;
 	}
 
 	public String getName() {

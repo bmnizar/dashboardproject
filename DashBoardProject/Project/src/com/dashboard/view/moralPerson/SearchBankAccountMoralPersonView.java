@@ -32,8 +32,8 @@ public class SearchBankAccountMoralPersonView implements Serializable {
 	public void init() {
 		List<MoralPerson> allMoralPersons = BankClientController.getAllMoralPersonByPaging(0, 10);
 		List<MoralPersonBean> listOfMoralPerson = new ArrayList<>();
-		for (MoralPerson physicalPerson : allMoralPersons) {
-			MoralPersonBean bankClientBean = ViewHelper.seralizeToViewMoralPerson(physicalPerson);
+		for (MoralPerson moralPerson : allMoralPersons) {
+			MoralPersonBean bankClientBean = ViewHelper.seralizeToViewMoralPerson(moralPerson);
 			listOfMoralPerson.add(bankClientBean);
 		}
 

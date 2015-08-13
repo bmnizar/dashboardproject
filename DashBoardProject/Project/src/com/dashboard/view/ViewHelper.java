@@ -9,7 +9,7 @@ import com.dashboard.view.physicalPerson.PhysicalPersonBean;
 public class ViewHelper {
 
 	public static PhysicalPersonBean seralizeToViewPhysicalPerson(PhysicalPerson physicalPerson) {
-		PhysicalPersonBean physicalPersonBean = new PhysicalPersonBean();  
+		PhysicalPersonBean physicalPersonBean = new PhysicalPersonBean();
 		physicalPersonBean.setId(physicalPerson.getId());
 
 		physicalPersonBean.setLocation(physicalPerson.getLocation());
@@ -41,10 +41,10 @@ public class ViewHelper {
 	 * @return
 	 */
 	public static MoralPersonBean seralizeToViewMoralPerson(MoralPerson moralPerson) {
-		MoralPersonBean moralPersonBean = new MoralPersonBean();  
+		MoralPersonBean moralPersonBean = new MoralPersonBean();
 		moralPersonBean.setId(moralPerson.getId());
-
-		moralPersonBean.setLocation(moralPerson.getLocation());
+		moralPersonBean.setName(moralPerson.getName());
+		moralPersonBean.setLocation(moralPerson.getLocation()); 
 		moralPersonBean.setDateOfCreation(moralPerson.getDateOfCreation());
 		moralPersonBean.setRegistrationId(moralPerson.getRegistrationId());
 		moralPersonBean.setDateOfExpiry(moralPerson.getDateOfExpiry());
