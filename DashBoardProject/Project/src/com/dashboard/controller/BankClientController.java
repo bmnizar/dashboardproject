@@ -15,8 +15,8 @@ import com.dashboard.model.MoralPerson;
 import com.dashboard.model.PhysicalPerson;
 import com.dashboard.model.helper.EntityManagerHelper;
 import com.dashboard.view.BankAccountBean;
-import com.dashboard.view.MoralPersonBean;
-import com.dashboard.view.PhysicalPersonBean;
+import com.dashboard.view.moralPerson.MoralPersonBean;
+import com.dashboard.view.physicalPerson.PhysicalPersonBean;
 
 public class BankClientController {
 
@@ -94,6 +94,19 @@ public class BankClientController {
 		createCriteria.setFirstResult(first);
 		createCriteria.setMaxResults(pageSize);
 		List<PhysicalPerson> list = createCriteria.list();
+		return list;
+	}
+	@SuppressWarnings("unchecked")
+	public static List<MoralPerson> getAllMoralPersonByPaging(int first,
+			int pageSize) {
+		SessionImpl sessionImpl = (SessionImpl) EntityManagerHelper
+				.getEntityManager().getDelegate();
+		Criteria createCriteria = sessionImpl
+				.createCriteria(MoralPerson.class);
+
+		createCriteria.setFirstResult(first);
+		createCriteria.setMaxResults(pageSize);
+		List<MoralPerson> list = createCriteria.list();
 		return list;
 	}
 }

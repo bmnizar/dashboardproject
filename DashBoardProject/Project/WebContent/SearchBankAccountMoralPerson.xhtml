@@ -11,14 +11,14 @@
 
 	<h:form>
 		<p:dataTable var="searchBankAccountPhysicalPersonDataTableId"
-			value="#{searchBankAccountPhysicalPersonView.getlistOfPhysicalPersonBean()}"
+			value="#{searchBankAccountMoralPersonView.getlistOfPhysicalPersonBean()}"
 			widgetVar="searchBankAccountPhysicalPersonDataTableWv"
 			emptyMessage="No Client found with given criteria"
-			filteredValue="#{searchBankAccountPhysicalPersonView.filteredPhysicalPerson}"
+			filteredValue="#{searchBankAccountMoralPersonView.filteredPhysicalPerson}"
 			paginator="true" rows="10"
 			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 			rowsPerPageTemplate="5,10,15" selectionMode="single"
-			selection="#{searchBankAccountPhysicalPersonView.selectedPhysicalPerson}" lazy="true"  >
+			selection="#{searchBankAccountMoralPersonView.selectedPhysicalPerson}" lazy="true"  >
 
 			<f:facet name="header">
 				<p:outputPanel>

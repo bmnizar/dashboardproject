@@ -1,4 +1,4 @@
-package com.dashboard.view;
+package com.dashboard.view.physicalPerson;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,11 +9,12 @@ import javax.faces.event.ActionEvent;
 
 import com.dashboard.controller.BankClientController;
 import com.dashboard.model.BankClientRank;
+import com.dashboard.view.BankAccountBean;
+import com.dashboard.view.GenericPersonBean;
 
 @ManagedBean()
 @SessionScoped
-public class PhysicalPersonBean extends GenericPersonBean implements
-		Serializable {
+public class PhysicalPersonBean extends GenericPersonBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,22 +24,11 @@ public class PhysicalPersonBean extends GenericPersonBean implements
 		addMessage("Physical Person  saved with success");
 	}
 
-	private Long id;
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
-	private BankClientRank bankAccountRank;
+
 	private String job;
-	private String location;
-	private BankAccountBean bankAccountBean = new BankAccountBean();
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -64,36 +54,12 @@ public class PhysicalPersonBean extends GenericPersonBean implements
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public BankClientRank getBankAccountRank() {
-		return bankAccountRank;
-	}
-
-	public void setBankAccountRank(BankClientRank bankAccountRank) {
-		this.bankAccountRank = bankAccountRank;
-	}
-
 	public String getJob() {
 		return job;
 	}
 
 	public void setJob(String job) {
 		this.job = job;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public BankAccountBean getBankAccountBean() {
-		return bankAccountBean;
-	}
-
-	public void setBankAccountBean(BankAccountBean bankAccountBean) {
-		this.bankAccountBean = bankAccountBean;
 	}
 
 	@Override

@@ -8,7 +8,13 @@ import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.SelectEvent;
 
+import com.dashboard.model.BankClientRank;
+
 public class GenericPersonBean {
+	protected Long id;
+	protected String location;
+	protected BankClientRank bankAccountRank = BankClientRank.Normal;
+	protected BankAccountBean bankAccountBean = new BankAccountBean();
 	public void onDateSelect(SelectEvent event) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -25,4 +31,38 @@ public class GenericPersonBean {
 				summary, null);
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public BankClientRank getBankAccountRank() {
+		return bankAccountRank;
+	}
+
+	public void setBankAccountRank(BankClientRank bankAccountRank) {
+		this.bankAccountRank = bankAccountRank;
+	}
+
+	public BankAccountBean getBankAccountBean() {
+		return bankAccountBean;
+	}
+
+	public void setBankAccountBean(BankAccountBean bankAccountBean) {
+		this.bankAccountBean = bankAccountBean;
+	}
+	
+	
 }

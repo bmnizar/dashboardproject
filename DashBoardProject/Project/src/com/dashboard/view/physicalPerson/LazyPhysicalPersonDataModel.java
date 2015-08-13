@@ -1,4 +1,4 @@
-package com.dashboard.view;
+package com.dashboard.view.physicalPerson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.primefaces.model.SortOrder;
 
 import com.dashboard.controller.BankClientController;
 import com.dashboard.model.PhysicalPerson;
+import com.dashboard.view.ViewHelper;
 
 /**
  * Dummy implementation of LazyDataModel that uses a list to mimic a real

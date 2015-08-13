@@ -1,4 +1,4 @@
-package com.dashboard.view;
+package com.dashboard.view.physicalPerson;
 
 import java.util.Comparator;
 

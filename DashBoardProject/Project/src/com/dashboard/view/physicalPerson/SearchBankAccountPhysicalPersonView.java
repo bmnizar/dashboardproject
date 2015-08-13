@@ -1,11 +1,10 @@
-package com.dashboard.view;
+package com.dashboard.view.physicalPerson;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
@@ -15,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.dashboard.controller.BankClientController;
 import com.dashboard.model.PhysicalPerson;
+import com.dashboard.view.ViewHelper;
 
 @ManagedBean()
 @SessionScoped
