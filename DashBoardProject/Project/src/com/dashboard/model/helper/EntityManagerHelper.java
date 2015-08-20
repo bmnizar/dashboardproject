@@ -4,15 +4,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.internal.SessionImpl;
+
 public class EntityManagerHelper {
 
 	private static EntityManagerFactory emf;
 	private static ThreadLocal<EntityManager> threadLocal;
+	private static EntityManager em;
 
 	public EntityManagerHelper() {
 		emf = Persistence
 				.createEntityManagerFactory("dashboardPersistenceUnit");
 		threadLocal = new ThreadLocal<EntityManager>();
+	}
+	public static SessionImpl getSession() {
+		if (em== null) {
+			getEntityManager();
+		}
+		SessionImpl sessionImpl = (org.hibernate.internal.SessionImpl) em
+				.getDelegate();
+		return sessionImpl;
+
 	}
 
 	public static EntityManager getEntityManager() {
@@ -24,6 +36,7 @@ public class EntityManagerHelper {
 		}
 		return em;
 	}
+	
 
 	public static void closeEntityManager() {
 		EntityManager em = threadLocal.get();
