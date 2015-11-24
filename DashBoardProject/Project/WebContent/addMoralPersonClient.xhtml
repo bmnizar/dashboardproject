@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<h:form>
+		<table>
+			<tr>
+				<p:messages id="msgs" />
+				<p:outputLabel>Create New Physical Person Client</p:outputLabel>
+			</tr>
+			<tr>
+				<td><p:growl id="growl" life="2000" /> <p:outputLabel
+						value="Name"></p:outputLabel></td>
+				<td><p:inputText id="name" value="#{moralPersonBean.name}"
+						required="true">
+						<f:validateLength minimum="2" />
+					</p:inputText> <p:message for="name" display="icon" /></td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="registrationId"></p:outputLabel></td>
+				<td><p:inputText id="registrationId"
+						value="#{moralPersonBean.registrationId}" required="true">
+						<f:validateLength minimum="2" />
+					</p:inputText> <p:message for="name" display="icon" /></td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="bankAccountRank"></p:outputLabel></td>
+				<td><p:selectOneMenu id="bankAccountRankId"
+						value="#{moralPersonBean.bankAccountRank}" style="width:125px">
+						<f:selectItem itemLabel="Excellent" itemValue="Excellent" />
+						<f:selectItem itemLabel="Good" itemValue="good" />
+						<f:selectItem itemLabel="Normal" itemValue="Normal" />
+
+						<f:selectItem itemLabel="Bad" itemValue="bad" />
+						<f:selectItem itemLabel="Suspecious" itemValue="Suspecious" />
+					</p:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="Amount"></p:outputLabel></td>
+				<td><p:inputText id="amountId"
+						value="#{moralPersonBean.bankAccountBean.amount}">
+
+						<f:validateRegex pattern="\d*" />
+					</p:inputText> <p:message for="amountId" display="icon" /></td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="Max Allowed Amount"></p:outputLabel>
+				</td>
+				<td><p:inputText id="maxAllowedRedAmount"
+						value="#{moralPersonBean.bankAccountBean.maxAllowedRedAmount}">
+						<f:validateRegex pattern="\d*" />
+					</p:inputText> <p:message for="maxAllowedRedAmount" display="icon" /></td>
+			</tr>
+
+			<tr>
+				<td><p:commandButton value="Save" id="ajax" update="growl"
+						actionListener="#{moralPersonBean.saveMoralPerson}"
+						styleClass="ui-priority-primary" /></td>
+				<td><p:button value="Return To Main Menu" id="returnToMainMenu"
+						outcome="index" styleClass="ui-priority-primary" /></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

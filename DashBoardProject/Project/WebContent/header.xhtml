@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+
+					times : 5
+				}, 100);
+
+			} else {
+				PF('dlg').hide();
+				location.reload();
+
+			}
+		}
+	</script>
+
+
+	<h:form id="f">
+		<p:graphicImage id="img" value="#{login.image}"
+			rendered="#{login.renderImage}">
+
+			<p:effect type="pulsate" event="load" delay="500" />
+
+		</p:graphicImage>
+
+
+
+		<p:growl id="Hmessages" />
+
+		<p:menubar id="menu">
+
+
+			<p:submenu id="Accueil" label="Accueil"
+				icon="ui-icon-grip-dotted-vertical">
+				<p:menuitem value="Accueil" url="Accueil.xhtml" />
+
+			</p:submenu>
+
+
+
+			<p:submenu id="menu1" label="Client management"
+				icon="ui-icon-grip-dotted-vertical" rendered="#{login.mClient}">
+				<p:menuitem value="Add Moral Person" url="addMoralPersonClient.xhtml" />
+				<p:menuitem value="Add Physical Person " url="addPhysicalPersonClient.xhtml" />
+				<p:menuitem value="Account Moral Person " url="SearchBankAccountMoralPerson.xhtml" />
+				<p:menuitem value="Account Physical Person " url="SearchBankAccountPhysicalPerson.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="My dashboard" icon="ui-icon-grip-dotted-vertical"
+				rendered="#{login.mClient}">
+				
+
+
+			</p:submenu>
+			
+			<f:facet name="options">
+
+				<p:inputText style="margin-right:10px" value="Rechercher ... " />
+				<p:commandButton oncomplete="PF('dlg').show()"
+					value="#{login.loginout}" icon="ui-icon-extlink" />
+
+			</f:facet>
+
+		</p:menubar>
+
+		<p:dialog id="dialog" header="Login" widgetVar="dlg" resizable="false"
+			modal="true" closable="false">
+
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputLabel for="loginAdministrateur" value="login" />
+				<h:inputText value="#{login.login}" id="loginAdministrateur"
+					label="login">
+					<f:validateLength minimum="4" />
+				</h:inputText>
+
+
+				<h:outputLabel for="passwordAdmin" value="password" />
+				<h:inputSecret value="#{login.password}" id="passwordAdmin"
+					label="password">
+					<f:validateLength minimum="4" />
+				</h:inputSecret>
+				<f:facet name="footer">
+					<p:commandButton id="loginButton" value="Login" update="Hmessages"
+						actionListener="#{login.connect}" type="submit"
+						oncomplete="handleLoginRequest(xhr, status, args);"
+						icon="ui-icon-check" />
+
+					<p:commandButton value="Cancel" onclick="PF('dlg').hide()"
+						actionListener="#{login.connect}" type="submit"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+
+				</f:facet>
+
+			</h:panelGrid>
+
+		</p:dialog>
+
+
+
+	</h:form>
+
+
+</h:head>
+</html>

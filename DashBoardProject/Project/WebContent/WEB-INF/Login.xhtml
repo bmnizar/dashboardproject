@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+
+<ui:composition template="/templates/common.xhtml">
+
+	<ui:define name="pageTitle">Authentification</ui:define>
+
+	<ui:define name="pageHeader">Authentification</ui:define>
+
+	<ui:define name="body">
+		<f:view>
+			<h:form id="loginForm">
+				<h:panelGrid border="0" columns="3" cellpadding="5">
+					<h:outputLabel value="Login" for="login" />
+					<h:inputText value="#{authenticationUser.login}" id="login"
+						required="true" requiredMessage="Mondatory field" />
+					<h:message for="login" />
+
+					<h:outputLabel value="Password" for="password" />
+					<h:inputSecret value="#{authenticationUser.password}" id="password"
+						required="true" requiredMessage="Mondatory field" />
+					<h:message for="password" />
+				</h:panelGrid>
+				<h:commandButton action="#{authenticationUser.validUser}"
+					value="Connexion" />
+
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+</html>
